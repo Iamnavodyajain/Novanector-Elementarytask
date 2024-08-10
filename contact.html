@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>likemindtechnologies</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+ <body>
+    <div>
+        <header class="background">
+            <nav class="flex justify-between">
+                <div class="font-bold flex text-blue items-center"></div>
+                <ul class="navbar flex justify-between items-center text-start">
+                    <li><a href="index.html"><button class="btn">BACK</button></a></li>
+                </ul>
+            </nav>
+            <hr>
+        </header>
+        <main>
+            <div class="container">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h1>CONTACT US</h1>
+                <input type="text" id="name" placeholder="YOUR NAME" required>
+                <input type="email" id="email" placeholder="EMAIL ID" required>
+                <input type="text" id="phone" placeholder="PHONE NO" required>
+                <textarea id="meassage" rows="4" placeholder="HOW CAN WE HELP YOU"></textarea>
+                <button type="submit">SUBMIT</button>
+            </form>
+            </div>
+           
+        </main>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+           Email.send({
+            Host : "smtp.gmail.com",
+            Username : "iamnavodyajain@gmail.com",
+            Password : "Jain@7989",
+            To : 'navodyajain142005@gmail.com',
+            From : document.getElementById("email").value,
+            Subject : "NEW CONTACT FROM ENQUIRY",
+            Body : "Name:" + document.getElementById("name").value
+            + "<br> Email:" + document.getElementById("email").value
+            + "<br> Phone no:" + document.getElementById("phone").value
+            + "<br> Message:" + document.getElementById("message").value
+        }).then(
+        message => alert("Message sent sucessfully")           
+        );
+        }
+    </script>
+ </body>
+</html>
